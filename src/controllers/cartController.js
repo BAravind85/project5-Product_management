@@ -1,4 +1,4 @@
-let cartModel = require("../models/cartModel")
+const cartModel = require("../models/cartModel")
 const ObjectId = require('mongoose').Types.ObjectId
 const { isValid, isValidBody, positiveIntigerRegex, priceRegex } = require('../middleware/valid')
 const productModel = require('../models/productModel')
@@ -105,7 +105,7 @@ const updateCart = async function (req, res) {
                     return res.status(200).send({ status: true, message: "removed successfully", data: updateCart })
                 }
             }
-        } return res.status(404).send({ status: false, message: "prodeuct not found" })
+        } return res.status(404).send({ status: false, message: "product not found" })
 
     } catch (err) {
         return res.status(500).send({ status: false, message: "There is an error inside of the code" })
