@@ -16,14 +16,14 @@ const createCart = async function (req, res) {
         let productId = body.productId
         let productQuantity = body.quantity
 
-        ////////////////////////////////////////////// body validation //////////////////////////////////////////////////
+       
         if (!isValidBody(body)) return res.status(400).send({ status: false, message: "Body cannot be empty" })
 
-        /////////////////////////////////////////////// object id validation ///////////////////////////////////////////////
+        
         if (!ObjectId.isValid(userId)) return res.status(400).send({ status: false, message: "Bad Request. userId invalid" })
         if (!ObjectId.isValid(productId)) return res.status(400).send({ status: false, message: "Bad Request. productId invalid" })
 
-        /////////////////////////////////////////////////items validation /////////////////////////////////////////////////////////
+        
     
         if ("quantity" in body){
             if (!isValid(productQuantity)) return res.status(400).send({ status: false, message: "product Quantity should be given" })
@@ -33,7 +33,7 @@ const createCart = async function (req, res) {
         }
 
 
-        /////////////////////////////////////////////// validating product existance//////////////////////////////////////////////
+        
         let productSearch = await productModel.findOne({ _id: productId, isDeleted: false })
         if (!productSearch) return res.status(400).send({ status: false, message: "product with this id is not available. please enter a valid product id" })
 
