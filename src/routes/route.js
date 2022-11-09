@@ -6,27 +6,27 @@ const { createProduct, getProduct, getproductDetails, deleteProduct ,updateProdu
 const { createCart, updateCart, getCart, deleteCart } = require("../controllers/cartController")
 const { createOrder, updateOrder } = require("../controllers/orderController")
 
-//////////////////*FEATURE 1 - User  ApI's*////////////////////////////////
+// User 
 router.post("/register", createUser)
 router.post("/login", userLogin)
 router.get("/user/:userId/profile",authentication, getProfile)
 router.put("/user/:userId/profile",authentication,autherization, updateUserProfile)
 
-//////////////////*FEATURE 2 - Product ApI's*///////////////////////////////
+//Product 
 router.post("/products", createProduct)
 router.get("/products", getProduct)
 router.put("/products/:productId",updateProduct)
 router.get("/products/:productId", getproductDetails)
 router.delete("/products/:productId", deleteProduct)
 
-////////////////////*FEATURE 3 - Cart ApI,s*/////////////////////////////////
+// Cart 
 
 router.post("/users/:userId/cart", authentication, autherization, createCart )
 router.put("/users/:userId/cart", authentication, autherization, updateCart)
 router.get("/users/:userId/cart", authentication, autherization, getCart)
 router.delete("/users/:userId/cart", authentication, autherization, deleteCart)
 
-//////////////////////*FEATURE 4 - Order ApI's*///////////////////////////////
+// Order
 router.post("/users/:userId/orders", authentication, autherization, createOrder)
 router.put("/users/:userId/orders", authentication, autherization, updateOrder)
 
